@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gowtham S – Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F3FF;--surface:#FFFFFF;--ink:#17142E;--muted:#5E5A7D;--line:#DCD7F5;
+  --accent:#6A48FF;--accent-ink:#FFFFFF;--gold:#E8A200;--gold-bg:#FFF2CC;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#12102A;--surface:#1C1940;--ink:#F1EEFF;--muted:#A9A4D0;--line:#2F2B63;
+  --accent:#9A82FF;--accent-ink:#12102A;--gold:#FFC745;--gold-bg:#3A3112;}}
+:root[data-theme="dark"]{
+  --bg:#12102A;--surface:#1C1940;--ink:#F1EEFF;--muted:#A9A4D0;--line:#2F2B63;
+  --accent:#9A82FF;--accent-ink:#12102A;--gold:#FFC745;--gold-bg:#3A3112;}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Bricolage Grotesque',system-ui,sans-serif;line-height:1.08;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+nav b{font-family:'Bricolage Grotesque',sans-serif;font-size:20px}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-weight:500;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 14px;font:500 14px 'Figtree',sans-serif;cursor:pointer}
+/* hero */
+.hero{padding:72px 0 64px}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(46px,8vw,92px);font-weight:800;letter-spacing:-.03em}
+.hero p.lead{font-size:20px;color:var(--muted);max-width:34em;margin:22px 0 30px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:12px;font-weight:600;text-decoration:none;border:2px solid var(--ink);transition:transform .15s}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-2px)}
+/* character sheet */
+.sheet{background:var(--surface);border:2px solid var(--ink);border-radius:20px;padding:24px;box-shadow:8px 8px 0 var(--accent)}
+.sheet h2{font-size:22px;margin-bottom:4px}
+.sheet .sub{color:var(--muted);font-size:15px;margin-bottom:18px}
+.sheet dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:15px}
+.sheet dt{color:var(--muted)}.sheet dd{margin:0;font-weight:600}
+.xp{margin-top:20px;height:12px;border-radius:99px;background:var(--line);overflow:hidden}
+.xp i{display:block;height:100%;width:0;background:var(--gold);border-radius:99px;animation:fill 1.6s .3s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes fill{to{width:82%}}
+.xpl{font-size:13px;color:var(--muted);margin-top:6px}
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(32px,5vw,48px);letter-spacing:-.02em;margin-bottom:12px}
+.intro{color:var(--muted);max-width:40em;margin:0 0 36px}
+.tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.tab{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 18px;border-radius:999px;font:600 15px 'Figtree',sans-serif;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:12px;min-height:120px;align-content:flex-start}
+.chip{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 20px;font:700 18px 'Bricolage Grotesque',sans-serif}
+.chip small{display:block;font:400 13px 'Figtree',sans-serif;color:var(--muted);margin-top:2px}
+/* two col lists */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:26px}
+.card h3{font-size:22px;margin-bottom:4px}
+.meta{color:var(--muted);font-size:15px;margin-bottom:12px}
+.card p{margin:0}
+.tag{display:inline-block;background:var(--gold-bg);color:var(--ink);border-radius:8px;padding:3px 10px;font-weight:600;font-size:14px}
+.pub{border-left:6px solid var(--accent);background:var(--surface);padding:28px 30px;border-radius:0 18px 18px 0}
+.pub h3{font-size:clamp(22px,3vw,30px);margin-bottom:12px}
+.pub p{color:var(--muted);margin:0 0 14px}
+ul.certs{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+ul.certs li{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;font-weight:500}
+.contact{text-align:left}
+.contact .big{font:800 clamp(28px,5vw,52px)/1.1 'Bricolage Grotesque',sans-serif;word-break:break-word;text-decoration:none;display:inline-block;margin:6px 0 26px;border-bottom:4px solid var(--accent)}
+footer{padding:30px 0 50px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:10px;font-weight:600;transition:transform .25s}
+#toast.on{transform:translate(-50%,0)}
+@media (max-width:760px){
+  .hero .wrap,.grid,ul.certs{grid-template-columns:1fr}
+  nav ul{display:none}
+  .hero{padding-top:44px}
+}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition:none!important}.xp i{width:82%}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <b>Gowtham S</b>
+  <ul><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#research">Research</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li></ul>
+  <button id="theme" aria-label="Toggle light and dark theme">Theme</button>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <h1>Gowtham S</h1>
+    <p class="lead">Frontend developer who builds fast, responsive interfaces in React, Next.js and TypeScript. AI &amp; Data Science graduate of 2026, with a soft spot for games and immersive apps.</p>
+    <div class="btns">
+      <a class="btn p" href="#contact">Get in touch</a>
+      <a class="btn" href="https://linkedin.com/in/gowtham-s-025827244" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+  <aside class="sheet" aria-label="Quick profile">
+    <h2>Player profile</h2>
+    <div class="sub">Based in Vellore, India</div>
+    <dl>
+      <dt>Class</dt><dd>Frontend Developer</dd>
+      <dt>Main stack</dt><dd>React · Next.js · TypeScript</dd>
+      <dt>Also plays</dt><dd>Flutter, Node.js, MongoDB</dd>
+      <dt>Degree</dt><dd>B.Tech AI &amp; Data Science</dd>
+      <dt>Published</dt><dd>1 research paper</dd>
+    </dl>
+    <div class="xp" role="img" aria-label="Experience bar"><i></i></div>
+    <div class="xpl">Level loading: always learning something new</div>
+  </aside>
+</div></header>
+
+<main>
+<section id="skills"><div class="wrap">
+  <h2>Skills</h2>
+  <p class="intro">Pick a category to see what I work with.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-k="front">Frontend</button>
+    <button class="tab" role="tab" aria-selected="false" data-k="back">Backend</button>
+    <button class="tab" role="tab" aria-selected="false" data-k="tools">Tools &amp; mobile</button>
+  </div>
+  <div class="chips" id="chips" aria-live="polite"></div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <h2>Experience</h2>
+  <div class="card">
+    <h3>IoT Intern, Virtual Tech Pvt. Ltd.</h3>
+    <div class="meta"><span class="tag">Jan – Feb 2024</span></div>
+    <p>Connected physical devices and sensors to software for real-time monitoring. Worked on data collection, device-to-application communication, and showing sensor data through software interfaces. Learned IoT architecture, real-time data handling and automation by integrating hardware and software into connected solutions.</p>
+  </div>
+</div></section>
+
+<section id="research"><div class="wrap">
+  <h2>Research</h2>
+  <div class="pub">
+    <h3>Automated Detection of Facial Growth Abnormalities in Children Using Shifted Window Vision Transformer with Landmark-Aware Feature Fusion</h3>
+    <p>Gowtham S, Sneka P, Srijan S I and V. Rajalakshmi. Journal of Empirical and Non-Empirical Research, vol. 2, no. 5, pp. 534–538, May 2026.</p>
+    <span class="tag">Published May 2026</span>
+  </div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <h2>Education</h2>
+  <div class="grid">
+    <div class="card"><h3>B.Tech, Artificial Intelligence and Data Science</h3><div class="meta">Sri Venkateswara College of Engineering, Sriperumbudur</div><span class="tag">2022 – 2026</span> <span class="tag">CGPA 6.1</span></div>
+    <div class="card"><h3>CBSE Schooling</h3><div class="meta">Springdays School, Vellore</div><span class="tag">2021 – 2022</span> <span class="tag">69%</span></div>
+  </div>
+  <h3 style="margin:48px 0 18px;font-size:28px">Certificates</h3>
+  <ul class="certs">
+    <li>Makethon 6.0, participation</li>
+    <li>Infosys Springboard: Cloud Computing</li>
+    <li>Infosys Springboard: Python Basics with Programming</li>
+    <li>Infosys Springboard: Git</li>
+    <li>Internship certificate, Virtual Technology Pvt. Ltd.</li>
+  </ul>
+</div></section>
+
+<section id="contact"><div class="wrap contact">
+  <h2>Let's build something</h2>
+  <p class="intro">Open to frontend and software developer roles, especially around games and interactive products.</p>
+  <a class="big" href="mailto:sgowtham0204@gmail.com" id="mail">sgowtham0204@gmail.com</a>
+  <div class="btns">
+    <button class="btn p" id="copy" style="font:600 17px 'Figtree',sans-serif;cursor:pointer">Copy email</button>
+    <a class="btn" href="tel:+919566913370">Call 95669 13370</a>
+    <a class="btn" href="https://linkedin.com/in/gowtham-s-025827244" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div></section>
+</main>
+<footer><div class="wrap">© 2026 Gowtham S · Vellore, India</div></footer>
+<div id="toast" role="status">Email copied</div>
+
+<script>
+var data={
+  front:[["HTML5",""],["CSS3",""],["JavaScript",""],["React.js",""],["Next.js",""],["TypeScript",""],["Tailwind CSS",""]],
+  back:[["Node.js",""],["Express.js",""],["REST APIs","Integration"],["MongoDB",""]],
+  tools:[["Flutter","Mobile apps"],["Git",""],["GitHub",""]]
+};
+var chips=document.getElementById('chips');
+function show(k){
+  chips.innerHTML=data[k].map(function(s){return '<div class="chip">'+s[0]+(s[1]?'<small>'+s[1]+'</small>':'')+'</div>'}).join('');
+}
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-selected','false')});
+    t.setAttribute('aria-selected','true');show(t.dataset.k);
+  });
+});
+show('front');
+var root=document.documentElement;
+document.getElementById('theme').addEventListener('click',function(){
+  var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+  root.dataset.theme=dark?'light':'dark';
+});
+document.getElementById('copy').addEventListener('click',function(){
+  var t=document.getElementById('toast');
+  function ok(){t.classList.add('on');setTimeout(function(){t.classList.remove('on')},1800)}
+  try{navigator.clipboard.writeText('sgowtham0204@gmail.com').then(ok,function(){location.href='mailto:sgowtham0204@gmail.com'})}
+  catch(e){location.href='mailto:sgowtham0204@gmail.com'}
+});
+</script>
+</body>
+</html>
